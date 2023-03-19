@@ -1,6 +1,5 @@
-<!-- eslint-disable vue/valid-template-root -->
 <template>
-  <!-- <router-link to="/UsuarioListar">Listar</router-link> |
+  <router-link to="/UsuarioListar">Listar</router-link> |
   <router-link to="/UsuarioEditar">Editar</router-link> |
   <router-link to="/UsuarioCrear">Crear</router-link>
   <div>
@@ -42,8 +41,7 @@
         </table>
       </div>
     </div>
-  </div> -->
-  <h1>Hola</h1>
+  </div>
 </template>
 
 <script>
