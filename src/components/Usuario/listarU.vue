@@ -1,5 +1,6 @@
+<!-- eslint-disable vue/valid-template-root -->
 <template>
-  <router-link to="/UsuarioListar">Listar</router-link> |
+  <!-- <router-link to="/UsuarioListar">Listar</router-link> |
   <router-link to="/UsuarioEditar">Editar</router-link> |
   <router-link to="/UsuarioCrear">Crear</router-link>
   <div>
@@ -27,7 +28,6 @@
               <td>{{ Usuarios.fkRol }}</td>
               <td>
                 <div class="btn-group" role="label" aria-label="">
-                  <!-- |<router-link :to="{name:'editar',param:{id:articulo.id}}" class="btn btn-info">Editar</router-link> | -->
                   |<button
                     type="button"
                     v-on:click="borrarUsuario(Usuarios.id)"
@@ -42,7 +42,8 @@
         </table>
       </div>
     </div>
-  </div>
+  </div> -->
+  <h1>Hola</h1>
 </template>
 
 <script>

@@ -34,12 +34,12 @@ const routes = [
     component: crearU,
   },
   {
-    path: "/UsuarioEditar",
+    path: "/UsuarioListar",
     name: "listar",
     component: listarU,
   },
   {
-    path: "/UsuarioListar",
+    path: "/UsuarioEditar",
     name: "editar",
     component: editarU,
   },
