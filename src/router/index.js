@@ -29,13 +29,13 @@ const routes = [
     component: Login,
   },
   {
-    path: "/UsuarioCrear",
+    path: "/CrearU",
     name: "crear",
     component: crearU,
   },
   {
     path: "/UsuarioListar",
-    name: "listar",
+    name: "UsuarioListar",
     component: listarU,
   },
   {
@@ -44,18 +44,18 @@ const routes = [
     component: editarU,
   },
   {
-    path: "/ClienteCrear",
-    name: "crear",
+    path: "/CrearC",
+    name: "crearC",
     component: crearC,
   },
   {
-    path: "/ClienteEditar",
-    name: "editar",
+    path: "/EditarC",
+    name: "editarC",
     component: editarC,
   },
   {
-    path: "/ClienteListar",
-    name: "listar",
+    path: "/ListarC",
+    name: "listarC",
     component: listarC,
   },
   {
@@ -69,8 +69,8 @@ const routes = [
     component: editarD,
   },
   {
-    path: "/DepartamentoListar",
-    name: "listar",
+    path: "/ListarD",
+    name: "ListarD",
     component: listarD,
   },
   {

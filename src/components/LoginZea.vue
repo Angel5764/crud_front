@@ -16,7 +16,7 @@
         name="password"
         placeholder="Password"
       />
-      <router-link to="/UsuarioListar">
+      <router-link to="/ListarC">
         <button type="button" class="btn btn-lg btn-dark">Login</button>
       </router-link>
     </form>
@@ -25,7 +25,7 @@
 
 <style>
 body {
-  background: #50504e !important;
+  background: #1b5a68 !important;
 }
 
 .wrapper {
