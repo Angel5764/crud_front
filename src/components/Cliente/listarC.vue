@@ -1,5 +1,4 @@
 <template>
-  <router-link to="/EditarC">Editar</router-link> |
   <router-link to="/CrearC">Crear</router-link>
   <div>
     <div class="card">
@@ -27,6 +26,13 @@
               <td>{{ Cliente.direccion }}</td>
               <td>
                 <div class="btn-group" role="label" aria-label="">
+                  <button
+                    type="button"
+                    v-on:click="editar(Cliente.pkCliente)"
+                    class="btn btn-warning"
+                  >
+                    Editar
+                  </button>
                   <button
                     type="button"
                     v-on:click="borrarCliente(Cliente.pkCliente)"
@@ -66,10 +72,13 @@ export default {
 
     borrarCliente(pkCliente) {
       console.log(pkCliente);
+      axios.delete("https://localhost:7241/Cliente?id=" + pkCliente);
 
-      axios.delete("https://localhost:7241/Cliente/" + pkCliente);
-
-      //window.location.href = "ListarC";
+      window.location.href = "ListarC";
+    },
+    editar(pkCliente) {
+      console.log(pkCliente);
+      this.$router.push("/EditarC/" + pkCliente);
     },
   },
 };

@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header">Agregar Cliente</div>
       <div class="card-body">
-        <form v-on:submit.prevent="agregarRegistro">
+        <form v-on:submit.prevent="agregarCliente">
           <div class="form-group">
             <label for="">Nombre:</label>
             <input
@@ -11,7 +11,6 @@
               class="form-control"
               name="nombre"
               v-model="Cliente.nombre"
-              aria-describedby="helpId"
               id="nombre"
               placeholder="Nombre"
             />
@@ -21,13 +20,9 @@
               class="form-control"
               name="apellidos"
               v-model="Cliente.apellido"
-              aria-describedby="helpId"
               id="apellido"
               placeholder="Apellidos"
             />
-            <small id="helpId" class="form-text" text-muted
-              >Ingresa un numero de telefono</small
-            >
           </div>
           <div class="form-group">
             <label for="">Telefono:</label>
@@ -36,35 +31,33 @@
               class="form-control"
               name="telefono"
               id="telefono"
-              v-model="articulo.proveedor"
-              aria-describedby="helpId"
+              v-model="Cliente.telefono"
               placeholder="Telefono"
             />
-            <small id="helpId" class="form-text" text-muted
-              >Ingresa un email:</small
-            >
-          </div>
-          <div class="form-group">
             <label for="">Email:</label>
             <input
               type="text"
               class="form-control"
               name="email"
               id="email"
-              v-model="articulo.email"
+              v-model="Cliente.email"
               aria-describedby="helpId"
               placeholder="Email"
             />
-            <small id="helpId" class="form-text" text-muted
-              >Ingresa el precio del articulo</small
-            >
+            <label for="">Direccion:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="direccion"
+              id="direccion"
+              v-model="Cliente.direccion"
+              placeholder="Direccion"
+            />
           </div>
-
           <br />
-
           <div class="btn-group" role="group">
             |<button type="submit" class="btn btn-success">Agregar</button>|
-            |<router-link :to="{ name: 'listar' }" class="btn btn-danger"
+            |<router-link :to="{ name: 'listarC' }" class="btn btn-danger"
               >Cancelar</router-link
             >|
           </div>
@@ -79,25 +72,27 @@ import axios from "axios";
 export default {
   data() {
     return {
-      articulo: {},
+      Cliente: {},
     };
   },
 
   methods: {
-    agregarRegistro() {
-      console.log(this.articulo);
+    agregarCliente() {
+      console.log(this.Cliente);
 
       var datosEnviar = {
-        name: this.articulo.name,
-        proveedor: this.articulo.proveedor,
-        precio: this.articulo.precio,
+        nombre: this.Cliente.nombre,
+        apellido: this.Cliente.apellido,
+        telefono: this.Cliente.telefono,
+        email: this.Cliente.email,
+        direccion: this.Cliente.direccion,
       };
 
       axios
-        .post("https://localhost:7053/articulos", datosEnviar)
+        .post("https://localhost:7241/Cliente", datosEnviar)
         .then((result) => {
           console.log(result);
-          window.location.href = "Listar";
+          window.location.href = "ListarC";
         });
     },
   },

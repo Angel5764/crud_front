@@ -49,7 +49,7 @@ const routes = [
     component: crearC,
   },
   {
-    path: "/EditarC",
+    path: "/editarC/:pkCliente",
     name: "editarC",
     component: editarC,
   },
