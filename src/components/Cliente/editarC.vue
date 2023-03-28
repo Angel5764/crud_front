@@ -113,7 +113,7 @@ export default {
   methods: {
     obtenerInformacionID() {
       axios
-        .get("https://localhost:7241/Cliente/" + this.$route.params.pkCliente)
+        .get("https://localhost:7241/Clientes/" + this.$route.params.pkCliente)
         .then((result) => {
           console.log(result.data.result);
           this.Cliente = result.data.result;
@@ -135,7 +135,7 @@ export default {
 
       axios
         .put(
-          "https://localhost:7241/Cliente?id=" + this.$route.params.pkCliente,
+          "https://localhost:7241/Clientes/" + this.$route.params.pkCliente,
           datosEnviar
         )
         .then((result) => {

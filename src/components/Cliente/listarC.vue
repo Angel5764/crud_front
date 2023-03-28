@@ -1,5 +1,4 @@
 <template>
-  <router-link to="/CrearC">Crear</router-link>
   <div>
     <div class="card">
       <div class="card-header">Cliente</div>
@@ -14,6 +13,11 @@
               <th>Telefono</th>
               <th>Email</th>
               <th>Direccion</th>
+              <th>
+                <router-link to="/CrearC">
+                  <button type="button" class="btn btn-success">Crear</button>
+                </router-link>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -63,7 +67,7 @@ export default {
   },
   methods: {
     consultarClientes() {
-      axios.get("https://localhost:7241/Cliente").then((result) => {
+      axios.get("https://localhost:7241/Clientes").then((result) => {
         console.log(result.data.result);
         this.Cliente = result.data.result;
         console.log(this.Cliente);
@@ -72,7 +76,7 @@ export default {
 
     borrarCliente(pkCliente) {
       console.log(pkCliente);
-      axios.delete("https://localhost:7241/Cliente?id=" + pkCliente);
+      axios.delete("https://localhost:7241/Clientes/" + pkCliente);
 
       window.location.href = "ListarC";
     },

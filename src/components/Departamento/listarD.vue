@@ -1,39 +1,44 @@
 <template>
-  <router-link to="/ListarC">Listar</router-link> |
-  <router-link to="/ClienteEditar">Editar</router-link> |
-  <router-link to="/ClienteCrear">Crear</router-link>
   <div>
     <div class="card">
-      <div class="card-header">Cliente</div>
+      <div class="card-header">Departamento</div>
 
       <div class="card_body">
         <table class="table">
           <thead>
             <tr>
               <th>ID</th>
-              <th>User</th>
-              <th>Password</th>
-              <th>fechaRegistro</th>
-              <th>fkEmpleado</th>
-              <th>fkRol</th>
+              <th>Nombre</th>
+              <th>
+                <router-link to="/CrearD">
+                  <button type="button" class="btn btn-success">Crear</button>
+                </router-link>
+              </th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="Usuarios in Usuarios" :key="Usuarios.id">
-              <td>{{ Usuarios.id }}</td>
-              <td>{{ Usuarios.user }}</td>
-              <td>{{ Usuarios.password }}</td>
-              <td>{{ Usuarios.fkEmpleado }}</td>
-              <td>{{ Usuarios.fkRol }}</td>
+            <tr
+              v-for="Departamento in Departamento"
+              :key="Departamento.pkDepartamento"
+            >
+              <td>{{ Departamento.pkDepartamento }}</td>
+              <td>{{ Departamento.nombre }}</td>
               <td>
                 <div class="btn-group" role="label" aria-label="">
-                  |<button
+                  <button
                     type="button"
-                    v-on:click="borrarUsuario(Usuarios.id)"
+                    v-on:click="editarD(Departamento.pkDepartamento)"
+                    class="btn btn-warning"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    type="button"
+                    v-on:click="borrarDepartamento(Departamento.pkDepartamento)"
                     class="btn btn-danger"
                   >
-                    Eliminar</button
-                  >|
+                    Eliminar
+                  </button>
                 </div>
               </td>
             </tr>
@@ -49,26 +54,30 @@ import axios from "axios";
 export default {
   data() {
     return {
-      Usuarios: [],
+      Departamento: [],
     };
   },
   created: function () {
-    this.consultarUsuarios();
+    this.consultarDepartamento();
   },
   methods: {
-    consultarUsuarios() {
-      axios.get("https://localhost:7241/Usuarios").then((result) => {
-        console.log(result.data);
-        this.Usuarios = result.data;
+    consultarDepartamento() {
+      axios.get("https://localhost:7241/Departamentos").then((result) => {
+        console.log(result.data.result);
+        this.Departamento = result.data.result;
+        console.log(this.Departamento);
       });
     },
 
-    borrarUsuario(id) {
-      console.log(id);
+    borrarDepartamento(pkDepartamento) {
+      console.log(pkDepartamento);
+      axios.delete("https://localhost:7241/Departamentos/" + pkDepartamento);
 
-      axios.delete("https://localhost:7241/Usuarios/EliminarUsers/" + id);
-
-      window.location.href = "UsuarioListar";
+      window.location.href = "listarD";
+    },
+    editarD(pkDepartamento) {
+      console.log(pkDepartamento);
+      this.$router.push("/editarD/" + pkDepartamento);
     },
   },
 };

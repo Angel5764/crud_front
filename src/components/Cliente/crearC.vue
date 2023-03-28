@@ -89,7 +89,7 @@ export default {
       };
 
       axios
-        .post("https://localhost:7241/Cliente", datosEnviar)
+        .post("https://localhost:7241/Clientes", datosEnviar)
         .then((result) => {
           console.log(result);
           window.location.href = "ListarC";
